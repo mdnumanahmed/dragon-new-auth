@@ -1,7 +1,11 @@
+import BreakingNew from "../../../Shared/Header/BreakingNew";
+import NavBar from "../../../Shared/Header/NavBar";
+
 const Home = () => {
   return (
     <div>
-      <h2>This is Home</h2>
+      <BreakingNew />
+      <NavBar />
     </div>
   );
 };

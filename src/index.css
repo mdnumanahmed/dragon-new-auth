@@ -29,3 +29,15 @@ body{
     font-size: 16px;
   }
 }
+
+@layer utilities{
+  .dark1{
+    color: #403F3F;
+  }
+  .dark2{
+    color: #706F6F;
+  }
+  .bg-dark1{
+    background-color: #F3F3F3;
+  }
+}
