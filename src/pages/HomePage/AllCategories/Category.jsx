@@ -18,6 +18,7 @@ const Category = ({ category, handleLoadCategoryNews }) => {
 Category.propTypes = {
   category: PropTypes.object.isRequired,
   handleLoadCategoryNews: PropTypes.func.isRequired,
+  setInitial: PropTypes.func.isRequired,
 };
 
 export default Category;

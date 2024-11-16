@@ -7,9 +7,14 @@ import CategorizedNews from "../CategorizedNews/CategorizedNews";
 import SportsNews from "../SportsNew/SportsNews";
 
 const Home = () => {
-  const { categories, handleLoadCategoryNews, categoryNews, sportsNews } =
-    useContext(DataContext);
-  console.log(categoryNews);
+  const {
+    categories,
+    handleLoadCategoryNews,
+    categoryNews,
+    sportsNews,
+    allNews,
+    initial,
+  } = useContext(DataContext);
   return (
     <div>
       <BreakingNew />
@@ -29,7 +34,7 @@ const Home = () => {
             </ul>
             <div>
               <hr />
-              <h2 className="font-bold dark1">Sports News</h2>
+              <h2 className="font-bold dark1 py-3">Sports News</h2>
               <hr />
               {sportsNews.map((news) => (
                 <SportsNews key={news._id} news={news} />
@@ -39,6 +44,10 @@ const Home = () => {
           <div className="col-span-2">
             <h2 className="font-bold dark1">Dragon News /Home</h2>
             <div>
+              {initial &&
+                allNews.map((news) => (
+                  <CategorizedNews key={news._id} news={news} />
+                ))}
               {categoryNews.map((news) => (
                 <CategorizedNews key={news._id} news={news} />
               ))}

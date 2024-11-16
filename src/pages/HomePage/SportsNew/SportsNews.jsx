@@ -11,7 +11,9 @@ const SportsNews = ({ news }) => {
         alt=""
         className="w-full h-48 object-cover object-top"
       />
-      <h2>{title.split(" ").slice(0, 10).join(" ")}</h2>
+      <h2 className="text-justify">
+        {title.split(" ").slice(0, 10).join(" ")}
+      </h2>
       <div className="flex justify-between">
         <p>Sports</p>
         <p className="flex gap-3 items-center">

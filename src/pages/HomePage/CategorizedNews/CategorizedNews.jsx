@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { formatDate } from "../../../utilities/dateTime";
 
 const CategorizedNews = ({ news }) => {
   const {
@@ -25,7 +26,9 @@ const CategorizedNews = ({ news }) => {
           <div>
             <p className="font-semibold dark1">{author?.name}</p>
             <p>
-              <small>{author?.published_date}</small>
+              <small>
+                {formatDate(author?.published_date, "MMMM dd, yyyy")}
+              </small>
             </p>
           </div>
         </div>
@@ -37,7 +40,9 @@ const CategorizedNews = ({ news }) => {
       <div className="p-5 space-y-5">
         <h2 className="font-bold dark1">{title}</h2>
         <img src={image_url || thumbnail_url} alt="" />
-        <p className="dark2">{details}</p>
+        <p className="dark2 text-justify">
+          {details.split(" ").slice(0, 40).join(" ")}
+        </p>
         <Link to={`/news/${news._id}`}>Read More</Link>
       </div>
       <hr />
