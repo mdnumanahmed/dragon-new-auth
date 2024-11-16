@@ -11,6 +11,7 @@ const DataProvider = ({ children }) => {
   const [sportsNews, setSportsNews] = useState([]);
   const [allNews, setAllNews] = useState([]);
   const [initial, setInitial] = useState(true);
+  const [detailsNews, setDetailsNews] = useState({});
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -34,6 +35,13 @@ const DataProvider = ({ children }) => {
       .then((data) => setCategoryNews(data.data));
   };
 
+  const loadNewsDetails = (id) => {
+    console.log("clicked", id);
+    fetch(`${baseURL}//news/${id}`)
+      .then((res) => res.json())
+      .then((data) => setDetailsNews(data.data[0]));
+  };
+
   const values = {
     categories,
     baseURL,
@@ -42,6 +50,8 @@ const DataProvider = ({ children }) => {
     sportsNews,
     allNews,
     initial,
+    loadNewsDetails,
+    detailsNews,
   };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;

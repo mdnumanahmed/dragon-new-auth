@@ -5,7 +5,7 @@ const Category = ({ category, handleLoadCategoryNews }) => {
   return (
     <li>
       <NavLink
-        to={`/news/category/${category.category_name}`}
+        to={`/news/category/${category.category_id}`}
         onClick={() => handleLoadCategoryNews(category.category_id)}
         className="py-4 pl-10 block text-xl"
       >
@@ -18,7 +18,6 @@ const Category = ({ category, handleLoadCategoryNews }) => {
 Category.propTypes = {
   category: PropTypes.object.isRequired,
   handleLoadCategoryNews: PropTypes.func.isRequired,
-  setInitial: PropTypes.func.isRequired,
 };
 
 export default Category;

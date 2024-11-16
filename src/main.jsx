@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout.jsx";
 import Home from "./pages/HomePage/Home/Home.jsx";
 import DataProvider from "./Provider/DataProvider.jsx";
+import DetailsNewsLayout from "./layouts/DetailsNewsLayout.jsx";
+import DetailsNews from "./pages/DetailsNews/DetailsNews.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,16 @@ const router = createBrowserRouter([
       {
         path: "/news/category/:category_id",
         element: <Home />,
+      },
+    ],
+  },
+  {
+    path: "news",
+    element: <DetailsNewsLayout />,
+    children: [
+      {
+        path: "/news/:newsId",
+        element: <DetailsNews />,
       },
     ],
   },

@@ -3,8 +3,11 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utilities/dateTime";
+import { useContext } from "react";
+import { DataContext } from "../../../Provider/DataProvider";
 
 const CategorizedNews = ({ news }) => {
+  const { loadNewsDetails } = useContext(DataContext);
   const {
     rating,
     total_view,
@@ -43,7 +46,13 @@ const CategorizedNews = ({ news }) => {
         <p className="dark2 text-justify">
           {details.split(" ").slice(0, 40).join(" ")}
         </p>
-        <Link to={`/news/${news._id}`}>Read More</Link>
+        <Link
+          to={`/news/${news._id}`}
+          onClick={() => loadNewsDetails(news._id)}
+          className="text-orange-800 text-xl py-2 inline-block"
+        >
+          Read More
+        </Link>
       </div>
       <hr />
       <div className="flex justify-between items-center p-5">
