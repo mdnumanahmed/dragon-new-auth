@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CategorizedNews = ({ news }) => {
   const {
@@ -36,14 +37,21 @@ const CategorizedNews = ({ news }) => {
       <div className="p-5 space-y-5">
         <h2 className="font-bold dark1">{title}</h2>
         <img src={image_url || thumbnail_url} alt="" />
-        <p className="dark2">{details}... Read More</p>
+        <p className="dark2">{details}</p>
+        <Link to={`/news/${news._id}`}>Read More</Link>
       </div>
       <hr />
       <div className="flex justify-between items-center p-5">
         <div>
-          Rating: {rating?.number} || {rating?.badge}
+          {" "}
+          Rating:{" "}
+          <span className="text-xl font-semibold dark1">
+            {rating?.number}
+          </span>{" "}
+          | Badge:{" "}
+          <span className="text-xl font-semibold dark1">{rating?.badge}</span>
         </div>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <FaEye /> <span>{total_view}</span>
         </div>
       </div>

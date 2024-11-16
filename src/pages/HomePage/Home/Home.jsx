@@ -4,9 +4,10 @@ import NavBar from "../../../Shared/Header/NavBar";
 import { DataContext } from "../../../Provider/DataProvider";
 import Category from "../AllCategories/Category";
 import CategorizedNews from "../CategorizedNews/CategorizedNews";
+import SportsNews from "../SportsNew/SportsNews";
 
 const Home = () => {
-  const { categories, handleLoadCategoryNews, categoryNews } =
+  const { categories, handleLoadCategoryNews, categoryNews, sportsNews } =
     useContext(DataContext);
   console.log(categoryNews);
   return (
@@ -27,7 +28,12 @@ const Home = () => {
               ))}
             </ul>
             <div>
+              <hr />
               <h2 className="font-bold dark1">Sports News</h2>
+              <hr />
+              {sportsNews.map((news) => (
+                <SportsNews key={news._id} news={news} />
+              ))}
             </div>
           </div>
           <div className="col-span-2">
