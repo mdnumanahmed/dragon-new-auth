@@ -5,6 +5,7 @@ import { DataContext } from "../../../Provider/DataProvider";
 import Category from "../AllCategories/Category";
 import CategorizedNews from "../CategorizedNews/CategorizedNews";
 import SportsNews from "../SportsNew/SportsNews";
+import RightSideBar from "../RightSideBar/RightSideBar";
 
 const Home = () => {
   const {
@@ -53,7 +54,9 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className=" border-2">Sidebar</div>
+          <div className=" border-2">
+            <RightSideBar />
+          </div>
         </div>
       </section>
     </div>
