@@ -14,7 +14,7 @@ const DataProvider = ({ children }) => {
   const [detailsNews, setDetailsNews] = useState({});
 
   useEffect(() => {
-    const loadCategories = async () => {
+    const loadInitialData = async () => {
       const res = await fetch(`${baseURL}/news/categories`);
       const data = await res.json();
       setCategories(data.data.news_category);
@@ -25,7 +25,7 @@ const DataProvider = ({ children }) => {
       const allNewsData = await response.json();
       setAllNews(allNewsData.data);
     };
-    loadCategories();
+    loadInitialData();
   }, []);
 
   const handleLoadCategoryNews = (category_id) => {
