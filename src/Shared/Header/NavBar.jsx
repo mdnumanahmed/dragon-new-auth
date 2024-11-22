@@ -1,5 +1,5 @@
 import { FaUserAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -23,9 +23,11 @@ const NavBar = () => {
           <div className="border-2 rounded-full p-4">
             <FaUserAlt className="text-xl " />
           </div>
-          <button className="px-11 py-4 bg-black/80 text-xl text-white font-semibold">
-            Login
-          </button>
+          <Link to={"/login"}>
+            <button className="px-11 py-4 bg-black/80 text-xl text-white font-semibold">
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </div>
