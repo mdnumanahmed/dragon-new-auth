@@ -1,11 +1,11 @@
 import Form from "../../Shared/Forms/Form";
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="container mx-auto">
-      <Form />
+      <Form isFirstTime={true} />
     </div>
   );
 };
 
-export default Login;
+export default Register;

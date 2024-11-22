@@ -3,7 +3,7 @@ import NavBar from "../Shared/Header/NavBar";
 
 const AuthLayout = () => {
   return (
-    <div>
+    <div className="bg-[#F3F3F3]">
       <NavBar />
       <Outlet />
     </div>

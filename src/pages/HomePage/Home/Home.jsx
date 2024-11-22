@@ -1,6 +1,4 @@
 import { useContext } from "react";
-import BreakingNew from "../../../Shared/Header/BreakingNew";
-import NavBar from "../../../Shared/Header/NavBar";
 import { DataContext } from "../../../Provider/DataProvider";
 import Category from "../AllCategories/Category";
 import CategorizedNews from "../CategorizedNews/CategorizedNews";
@@ -18,8 +16,6 @@ const Home = () => {
   } = useContext(DataContext);
   return (
     <div>
-      <BreakingNew />
-      <NavBar />
       <section className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
           <div className="">
