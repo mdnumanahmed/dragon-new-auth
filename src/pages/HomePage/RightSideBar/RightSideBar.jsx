@@ -14,13 +14,24 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const RightSideBar = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, githubSignIn } = useContext(AuthContext);
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +48,10 @@ const RightSideBar = () => {
         >
           <FaGoogle /> Login with Google
         </button>
-        <button className="flex items-center gap-3 text-lg border-2 border-gray-400 rounded-lg justify-center py-3 w-full ">
+        <button
+          onClick={handleGithubSignIn}
+          className="flex items-center gap-3 text-lg border-2 border-gray-400 rounded-lg justify-center py-3 w-full "
+        >
           <FaGithub /> Login with Github
         </button>
       </div>
