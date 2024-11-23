@@ -42,6 +42,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/news/:newsId",
+        loader: ({ params }) =>
+          fetch(
+            `https://openapi.programming-hero.com/api/news/${params.newsId}`
+          ),
         element: (
           <PrivateRoute>
             <DetailsNews />

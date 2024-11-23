@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 // import Form from "../../Shared/Forms/Form";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserData } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
@@ -25,6 +25,15 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
+
+        // update User Data
+        updateUserData(createdUser, name, photo)
+          .then(() => {
+            console.log("updated", createdUser, name, photo);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -143,12 +152,12 @@ const Register = () => {
             </div>
             <div className="text-center mt-5">
               <h3>
-                Are you first time here?{" "}
+                Already have an account? Please{" "}
                 <Link
                   className="text-blue-600 font-semibold"
-                  to={"/user/register"}
+                  to={"/user/login"}
                 >
-                  Register
+                  Login
                 </Link>
               </h3>
             </div>

@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { DataContext } from "../../Provider/DataProvider";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 const DetailsNews = () => {
-  const { detailsNews, handleLoadCategoryNews } = useContext(DataContext);
-  const { image_url, title, details, category_id } = detailsNews;
-  console.log(detailsNews);
+  const { handleLoadCategoryNews } = useContext(DataContext);
+  const data = useLoaderData();
+  const { image_url, title, details, category_id } = data.data[0];
+
   return (
     <div>
       <h2 className="mb-3 font-bold">Dragon News Details</h2>

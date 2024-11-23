@@ -3,11 +3,11 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utilities/dateTime";
-import { useContext } from "react";
-import { DataContext } from "../../../Provider/DataProvider";
+// import { useContext } from "react";
+// import { DataContext } from "../../../Provider/DataProvider";
 
 const CategorizedNews = ({ news }) => {
-  const { loadNewsDetails } = useContext(DataContext);
+  // const { loadNewsDetails } = useContext(DataContext);
   const {
     rating,
     total_view,
@@ -48,7 +48,7 @@ const CategorizedNews = ({ news }) => {
         </p>
         <Link
           to={`/news/${news._id}`}
-          onClick={() => loadNewsDetails(news._id)}
+          // onClick={() => loadNewsDetails(news._id)}
           className="text-orange-800 text-xl py-2 inline-block"
         >
           Read More

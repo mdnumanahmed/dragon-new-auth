@@ -1,6 +1,28 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+  const [showPass, setShowPass] = useState(false);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    signInUser(email, password)
+      .then((result) => {
+        const signedUser = result.user;
+        console.log(signedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="container mx-auto">
       {/* <Form /> */}
@@ -10,8 +32,8 @@ const Login = () => {
         </h2>
         <hr className="my-12" />
         <form
+          onSubmit={handleSignIn}
           noValidate=""
-          action=""
           className="container flex flex-col mx-auto space-y-12"
         >
           <fieldset className="rounded-md shadow-sm ">
@@ -31,7 +53,7 @@ const Login = () => {
                   className="w-full p-5 bg-[#F3F3F3] rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
                 />
               </div>
-              <div className="space-y-4">
+              <div className="space-y-4 relative">
                 <label
                   htmlFor="password"
                   className="text-xl font-semibold text-dark1"
@@ -41,10 +63,16 @@ const Login = () => {
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPass ? "text" : "password"}
                   placeholder="Password"
                   className="w-full p-5 bg-[#F3F3F3] rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
                 />
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className="text-3xl absolute right-4 top-12"
+                >
+                  {!showPass ? <FaRegEye /> : <FaRegEyeSlash />}
+                </span>
               </div>
 
               <div className="mt-6">
@@ -54,7 +82,7 @@ const Login = () => {
               </div>
               <div className="text-center mt-5">
                 <h3>
-                  Are you first time here?{" "}
+                  Are you first time here? Please{" "}
                   <Link
                     className="text-blue-600 font-semibold"
                     to={"/user/register"}

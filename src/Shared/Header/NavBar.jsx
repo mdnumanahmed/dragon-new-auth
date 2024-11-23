@@ -42,8 +42,12 @@ const NavBar = () => {
         <div className="flex gap-6 items-center">
           {user ? (
             <>
-              <div className="border-2 rounded-full p-4">
-                <FaUserAlt className="text-xl " />
+              <div className="border-2 rounded-full p-2">
+                <img
+                  src={user.photoURL}
+                  alt=""
+                  className="w-14 h-14 mx-auto rounded-full dark:bg-gray-500 aspect-square"
+                />
               </div>
               <Link to={"/"}>
                 <button
@@ -55,11 +59,16 @@ const NavBar = () => {
               </Link>
             </>
           ) : (
-            <Link to={"/user/login"}>
-              <button className="px-11 py-4 bg-black/80 text-xl text-white font-semibold">
-                Login
-              </button>
-            </Link>
+            <>
+              <div className="border-2 rounded-full p-2">
+                <FaUserAlt className="text-xl " />
+              </div>
+              <Link to={"/user/login"}>
+                <button className="px-11 py-4 bg-black/80 text-xl text-white font-semibold">
+                  Login
+                </button>
+              </Link>{" "}
+            </>
           )}
         </div>
       </div>
