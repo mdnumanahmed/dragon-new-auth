@@ -10,13 +10,31 @@ import swimming from "./../../../assets/swimming.png";
 import classImg from "./../../../assets/class.png";
 import playground from "./../../../assets/playground.png";
 import bg from "./../../../assets/bg.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const RightSideBar = () => {
+  const { googleSignIn } = useContext(AuthContext);
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="space-y-3">
         <h2 className="font-bold dark1">Login with</h2>
-        <button className="flex items-center gap-3 text-lg border-2 border-gray-400 rounded-lg justify-center py-3 w-full ">
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center gap-3 text-lg border-2 border-gray-400 rounded-lg justify-center py-3 w-full hover:bg-dark1 "
+        >
           <FaGoogle /> Login with Google
         </button>
         <button className="flex items-center gap-3 text-lg border-2 border-gray-400 rounded-lg justify-center py-3 w-full ">

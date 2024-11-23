@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state || "";
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -18,6 +22,7 @@ const Login = () => {
       .then((result) => {
         const signedUser = result.user;
         console.log(signedUser);
+        navigate(from);
       })
       .catch((error) => {
         console.log(error);
