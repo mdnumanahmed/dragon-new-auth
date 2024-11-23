@@ -21,7 +21,7 @@ const DataProvider = ({ children }) => {
       const resp = await fetch(`${baseURL}/news/category/04`);
       const sportsData = await resp.json();
       setSportsNews(sportsData.data);
-      const response = await fetch(`${baseURL}/news/category/04`);
+      const response = await fetch(`${baseURL}/news/category/08`);
       const allNewsData = await response.json();
       setAllNews(allNewsData.data);
     };
@@ -37,7 +37,7 @@ const DataProvider = ({ children }) => {
 
   const loadNewsDetails = (id) => {
     console.log("clicked", id);
-    fetch(`${baseURL}//news/${id}`)
+    fetch(`${baseURL}/news/${id}`)
       .then((res) => res.json())
       .then((data) => setDetailsNews(data.data[0]));
   };

@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Form = ({ isFirstTime }) => {
+  const [accepted, setAccepted] = useState(false);
+
   return (
     <div>
       <section className="p-24 bg-white text-gray-800 max-w-3xl mx-auto">
@@ -88,6 +91,7 @@ const Form = ({ isFirstTime }) => {
                       id="terms"
                       name="terms"
                       type="checkbox"
+                      onChange={() => setAccepted(!accepted)}
                       className="mr-3 p-5 bg-[#F3F3F3] rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-violet-400 border-gray-700"
                     />
                     <label
@@ -104,9 +108,20 @@ const Form = ({ isFirstTime }) => {
               )}
             </div>
             <div className="mt-6">
-              <button className="w-full bg-black/80 text-white text-xl font-semibold py-4 rounded-md">
-                {isFirstTime ? "Register" : "Login"}
-              </button>
+              {isFirstTime ? (
+                <button
+                  disabled={!accepted}
+                  className={`${
+                    !accepted && "bg-gray-300"
+                  } w-full bg-black/80 text-white text-xl font-semibold py-4 rounded-md`}
+                >
+                  Register
+                </button>
+              ) : (
+                <button className="w-full bg-black/80 text-white text-xl font-semibold py-4 rounded-md">
+                  Login
+                </button>
+              )}
             </div>
             <div className="text-center mt-5">
               <h3>

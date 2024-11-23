@@ -8,11 +8,14 @@ import Login from "../pages/Login/Login";
 import About from "../pages/About/About";
 import Career from "../pages/Career/Career";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -35,16 +38,22 @@ const router = createBrowserRouter([
   {
     path: "news",
     element: <DetailsNewsLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/news/:newsId",
-        element: <DetailsNews />,
+        element: (
+          <PrivateRoute>
+            <DetailsNews />
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "user",
     element: <AuthLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "login",

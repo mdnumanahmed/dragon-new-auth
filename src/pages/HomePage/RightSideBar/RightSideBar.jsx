@@ -25,7 +25,7 @@ const RightSideBar = () => {
       </div>
       <div className="my-6">
         <h2 className="font-bold dark1">Find Us On</h2>
-        <div className="grid grid-cols-1 divide-y">
+        <div className="grid grid-cols-1 divide-y border rounded-lg">
           <button className="flex items-center gap-3 text-lg  rounded-lg py-3 px-4 w-full ">
             <FaFacebookF className="rounded-full bg-blue-200 w-8 h-8 p-2" />{" "}
             Facebook

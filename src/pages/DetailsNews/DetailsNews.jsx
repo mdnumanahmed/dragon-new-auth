@@ -9,7 +9,7 @@ const DetailsNews = () => {
   console.log(detailsNews);
   return (
     <div>
-      <h2 className="mb-3 font-bold">Dragon News</h2>
+      <h2 className="mb-3 font-bold">Dragon News Details</h2>
       <div className="space-y-3">
         <img src={image_url} alt="" />
         <h2 className="font-bold text-dark1">{title}</h2>
